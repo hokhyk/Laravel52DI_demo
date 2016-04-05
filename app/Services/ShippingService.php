@@ -14,17 +14,18 @@ class ShippingService
      */
     public function calculateFee($companyName, $weight)
     {
-        if ($companyName == 'BlackCat') {
-            $blackCat = new BlackCat();
-            return $blackCat->calculateFee($weight);
-        } elseif ($companyName == 'Hsinchu') {
-            $hsinchu = new Hsinchu();
-            return $hsinchu->calculateFee($weight);
-        } elseif ($companyName == 'PostOffice') {
-            $postOffice = new PostOffice();
-            return $postOffice->calculateFee($weight);
-        } else {
-            throw new Exception('No company exception');
+        switch ($companyName) {
+            case 'BlackCat':
+                $blackCat = new BlackCat();
+                return $blackCat->calculateFee($weight);
+            case 'Hsinchu':
+                $hsinchu = new Hsinchu();
+                return $hsinchu->calculateFee($weight);
+            case 'PostOffice':
+                $postOffice = new PostOffice();
+                return $postOffice->calculateFee($weight);
+            default:
+                throw new Exception('No company exception');
         }
     }
 }
