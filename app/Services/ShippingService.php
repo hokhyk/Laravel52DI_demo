@@ -16,14 +16,14 @@ class ShippingService
     {
         switch ($companyName) {
             case 'BlackCat':
-                $blackCat = new BlackCat();
-                return $blackCat->calculateFee($weight);
+                $logistics = new BlackCat();
+                return $logistics->calculateFee($weight);
             case 'Hsinchu':
-                $hsinchu = new Hsinchu();
-                return $hsinchu->calculateFee($weight);
+                $logistics = new Hsinchu();
+                return $logistics->calculateFee($weight);
             case 'PostOffice':
-                $postOffice = new PostOffice();
-                return $postOffice->calculateFee($weight);
+                $logistics = new PostOffice();
+                return $logistics->calculateFee($weight);
             default:
                 throw new Exception('No company exception');
         }
