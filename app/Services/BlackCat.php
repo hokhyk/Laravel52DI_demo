@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-class BlackCat
+class BlackCat implements LogisticsInterface
 {
     /**
      * @param int $weight
