@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-class PostOffice
+class PostOffice implements LogisticsInterface
 {
     /**
      * @param int $weight
