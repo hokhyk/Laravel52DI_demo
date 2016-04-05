@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-class Hsinchu
+class Hsinchu implements LogisticsInterface
 {
     /**
      * @param int $weight
