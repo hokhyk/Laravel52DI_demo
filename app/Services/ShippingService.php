@@ -2,19 +2,26 @@
 
 namespace App\Services;
 
-use Exception;
-
 class ShippingService
 {
+    /** @var LogisticsInterface */
+    private $logistics;
+
     /**
-     * @param string $companyName
+     * ShippingService constructor.
+     * @param LogisticsInterface $logistics
+     */
+    public function __construct(LogisticsInterface $logistics)
+    {
+        $this->logistics = $logistics;
+    }
+
+    /**
      * @param int $weight
      * @return int
-     * @throws Exception
      */
-    public function calculateFee($companyName, $weight)
+    public function calculateFee($weight)
     {
-        $logistics = LogisticsFactory::create($companyName);
-        return $logistics->calculateFee($weight);
+        return $this->logistics->calculateFee($weight);
     }
 }
