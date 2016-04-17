@@ -21,28 +21,10 @@ class ShippingServiceTest extends TestCase
 
         App::instance(LogisticsInterface::class, $mock);
 
-        $target = App::make(ShippingService::class);
-
         /** act */
-        $actual = $target->calculateFee($weight);
-
-        /** assert */
-        $this->assertEquals($expected, $actual);
-    }
-
-    /** @test */
-    public function 黑貓整合測試()
-    {
-        /** arrange */
-        $expected = 110;
-        $weight = 1;
-
-        App::bind(LogisticsInterface::class, BlackCat::class);
-
-        $target = App::make(ShippingService::class);
-
-        /** act */
-        $actual = $target->calculateFee($weight);
+        $actual = App::call(ShippingService::class . '@calculateFee', [
+            'weight' => $weight
+        ]);
 
         /** assert */
         $this->assertEquals($expected, $actual);
